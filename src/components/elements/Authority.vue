@@ -48,7 +48,7 @@
     height: 100%;
     width: 100%;
     background-color: #001a1c;
-    bottom: 0;
+    display: block;
 }
 .footer_hv {
     text-align: center;

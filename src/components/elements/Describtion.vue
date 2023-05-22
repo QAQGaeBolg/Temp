@@ -1,20 +1,31 @@
 <template>
-    <h3>{{ title }}</h3>
+    <h3 v-bind = "attrs1">{{ props.title }}</h3>
     <table class="post-table">
         <tr>
-            <td class="post-td-title">Keyword</td>
-            <td class="post-td"></td>
+            <td class="post-td-title">Keywords</td>
+            <td class="post-td">{{ props.keywords }}</td>
         </tr>
         <tr>
             <td class="post-td-title">Abstract</td>
-            <td class="post-td"></td>
+            <td class="post-td">{{ props.abstract }}</td>
         </tr>
     </table>
 </template>
 
 <script setup lang = 'ts'>
-import { ref } from 'vue'
-const title = ref("Post Title")
+import { ref, useAttrs } from 'vue'
+
+interface Post {
+  title: string
+  keywords: string
+  abstract: string
+}
+const props = withDefaults(defineProps<Post>(), {
+  title: "",
+  keywords: "",
+  abstract: ""
+});
+const attrs1 = useAttrs()
 </script>
 
 <style scoped>
